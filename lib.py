@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Общая библиотека функций
-# ver 1.01
+# ver 1.02
 
 import string
 from configparser import ConfigParser
@@ -50,6 +50,18 @@ def unique(lst):            # сделать список уникальным
                 break
             seen.add(x.lower())
     return
+
+def get_path(full):
+    if len(full.split('/')) > 1:
+        return '/'.join(full.split('/')[:len(full.split('/')) - 1]) + '/'  # только путь без имени файла
+    else:
+        return ''
+
+def get_filename(full):
+    if len(full.split('/')) > 1:
+        return full.split('/')[len(full.split('/'))-1]
+    else:
+        return full
 
 def format_police_code(code):# форматирование любого числа в код подразделения 2 => '000-002'
     if lenl(code) < 7:
